@@ -1,0 +1,80 @@
+
+Showing logs for build [32mcb-kubecd-environment-pr-192-12-m69bl-1[0m stage [32mpr-checks[0m and container [32mstep-credential-initializer-m828t[0m
+{"level":"warn","ts":1585679619.38216,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585679619.3828237,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mcb-kubecd-environment-pr-192-12-m69bl-1[0m stage [32mpr-checks[0m and container [32mstep-working-dir-initializer-nnsnb[0m
+{"level":"warn","ts":1585679620.5647142,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1585679620.5724177,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mcb-kubecd-environment-pr-192-12-m69bl-1[0m stage [32mpr-checks[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-192-12-m69bl-1[0m stage [32mpr-checks[0m and container [32mstep-git-source-cb-kubecd-environment-pr-192-12-m69bl-mjgzn[0m
+{"level":"warn","ts":1585679649.7164176,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585679650.9578183,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/cb-kubecd/environment-pr-192-12-gke-upgrade-dev.git @ master in path /workspace/source"}
+
+Showing logs for build [32mcb-kubecd-environment-pr-192-12-m69bl-1[0m stage [32mpr-checks[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:f7368ddc66d09e7f9aa796956df9362eee4584ab,1:a1b64aeeecca4c4587652c5e9ed4f87dadcf831a
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow a1b64aeeecca4c4587652c5e9ed4f87dadcf831a: f7368ddc66d09e7f9aa796956df9362eee4584ab:
+DEBUG: ran git fetch --unshallow origin a1b64aeeecca4c4587652c5e9ed4f87dadcf831a: f7368ddc66d09e7f9aa796956df9362eee4584ab: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard f7368ddc66d09e7f9aa796956df9362eee4584ab
+DEBUG: ran git reset --hard f7368ddc66d09e7f9aa796956df9362eee4584ab in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: JX_LOG_LEVEL=error LC_ALL=C git merge a1b64aeeecca4c4587652c5e9ed4f87dadcf831a
+DEBUG: ran git merge a1b64aeeecca4c4587652c5e9ed4f87dadcf831a in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e f7368ddc66d09e7f9aa796956df9362eee4584ab..HEAD
+Merged SHA a1b64aeeecca4c4587652c5e9ed4f87dadcf831a with commit message 'feat: upgrade pipeline builder images' into base branch master
+Merged SHA b1c0cca3f55951566e5fd2749d5c77c666226c75 with commit message 'feat: upgrade version stream' into base branch master
+Merged SHA 328680eb517c96d9cbfbd0fd66d408ff331c3280 with commit message 'release 2.0.1261+c**d.9' into base branch master
+Merged SHA 366731d11d66a31e525639b219c92df104c96a3f with commit message 'Changes from upstream boot config' into base branch master
+Merged SHA 0e733e55f5f13686f8350d31f95d95caf584dfdc with commit message 'Changes from upstream boot config' into base branch master
+
+Showing logs for build [32mcb-kubecd-environment-pr-192-12-m69bl-1[0m stage [32mpr-checks[0m and container [32mstep-verify-parameters[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-192-12-m69bl-1[0m stage [32mpr-checks[0m and container [32mstep-lint-env-helm[0m
+rm -rf charts
+rm -rf requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add bitnami https://charts.bitnami.com/bitnami
+"bitnami" has been added to your repositories
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
+"stable" has been added to your repositories
+** step helm build --boot --provider-values-dir=../kubeProviders
+WARNING: could not find a git repository in the directory .: No git conf dir found
+Ignoring templates/.gitignore
+Applying the kubernetes overrides at ../kubeProviders/gke/values.tmpl.yaml
+Verifying the helm requirements versions in dir: . using version stream URL: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git and git ref: 9d5674ae911bdb41066758576a3c9e53c2edc48c
+Wrote chart values.yaml values.yaml generated from directory tree
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for http://jenkins-x-chartmuseum:8080 from vault helm/repos
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+helm lint .
+==> Linting .
+Lint OK
+
+1 chart(s) linted, no failures
